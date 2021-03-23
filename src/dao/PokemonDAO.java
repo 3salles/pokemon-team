@@ -59,6 +59,64 @@ public class PokemonDAO {
 		}
 	}
 
+public List<Pokemon> getPokemons(){
+		
+		String sql = "SELECT * FROM pokemons ORDER BY official_id";
+		
+		List<Pokemon> pokemons = new ArrayList<Pokemon>();
+		
+		Connection connection = null;
+		PreparedStatement pstm = null;
+		
+		ResultSet rset = null;
+		
+		try {
+			connection = JdbcConnection.getConnection();
+			
+			pstm = connection.prepareStatement(sql);
+			
+			rset = pstm.executeQuery();
+			
+			while (rset.next()) {
+				Pokemon pokemon = new Pokemon();
+				
+				pokemon.setOfficial_id(rset.getInt("official_id"));
+				pokemon.setName(rset.getString("name"));
+				pokemon.setPrimary_type(rset.getString("primary_type"));
+				pokemon.setSecond_type(rset.getString("second_type"));
+				pokemon.setAtk(rset.getInt("atk"));
+				pokemon.setDef(rset.getInt("def"));
+				pokemon.setHp(rset.getInt("hp"));
+				pokemon.setSpeed(rset.getInt("speed"));
+				
+				pokemons.add(pokemon);
+				
+			}
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			
+		} finally {
+			try {
+				if(rset != null) {
+					rset.close();
+				}
+				
+				if (pstm != null) {
+					pstm.close();
+				}
+				
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception exception) {
+				exception.printStackTrace();
+				
+			}
+		}
+		
+		return pokemons;
+		
+	}
 	
 	
 }

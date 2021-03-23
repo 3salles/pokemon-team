@@ -16,7 +16,11 @@ public class Main {
 		 * 
 		 * Pokemon growlithe = new Pokemon(58, "Growlithe", "Fogo", null, 70, 45, 55,
 		 * 60); pokemonDao.savePokemon(growlithe);
+		 * 
+		 * pokemonDao.savePokemon(squirtle);
 		 */
+		Pokemon squirtle = new Pokemon(7, "Squirtle", "Água", null, 48, 65, 44, 43);
+		
 
 		// List Pokemons
 		System.out.println("ID - Pokemon - HP - ATK - DEF - SPEED");
@@ -24,8 +28,14 @@ public class Main {
 		for (Pokemon p : pokemonDao.getPokemons()) {
 			System.out.printf("%d - %s - %d - %d - %d - %d\n", p.getOfficial_id(), p.getName(), p.getHp(), p.getAtk(),
 					p.getDef(), p.getSpeed());
-
 		}
+		
+		// Delete Pokemon
+		
+		
+		pokemonDao.deletePokemon(squirtle);
+		
+		
 
 	}
 }

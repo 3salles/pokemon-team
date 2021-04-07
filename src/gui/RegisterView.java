@@ -1,214 +1,372 @@
 package gui;
 
 import javax.swing.*;
+import model.Pokemon;
+import dao.PokemonDAO;
+
 
 public class RegisterView extends JFrame {
-	// Variables declaration
-	private JLabel atkLabel;
-	private JTextField atkTextField;
-	private JButton cancelButton;
-	private JLabel defLabel;
-	private JTextField defTextField;
-	private JLabel hpLabel;
-	private JTextField hpTextField;
-	private JLabel idLabel;
-	private JTextField idTextField;
-	private JPanel registerPanel;
-	private JLabel nameLabel;
-	private JTextField nameTextField;
-	private JLabel registerLabel;
-	private JButton saveButton;
-	private JLabel spdLabel;
-	private JTextField spdTextField;
-	// End of variables declaration
+    
+    public RegisterView() {
+        initComponents();
+    }
 
-	/**
-	 * Creates new form RegisterView
-	 */
-	public RegisterView() {
-		initComponents();
-	}
+    @SuppressWarnings("unchecked")
+   
+    private void initComponents() {
+        // Create Register Panel
+        registerPanel = new JPanel();
 
-	@SuppressWarnings("unchecked")
-	private void initComponents() {
-		setTitle("Pokemon Team");
+        // Create Labels
+        idLabel = new JLabel();
+        idLabel.setText("ID:");
+        nameLabel = new JLabel();
+        nameLabel.setText("Nome:");
+        primTypeLabel = new JLabel();
+        primTypeLabel.setText("Tipo 1:");
+        secTypeLabel = new JLabel();
+        secTypeLabel.setText("Tipo 2:");
+        atkLabel = new JLabel();
+        atkLabel.setText("Ataque:");
+        defLabel = new JLabel();
+        defLabel.setText("Defesa:");
+        spdLabel = new JLabel();
+        spdLabel.setText("Agilidade:");        
+        lifeLabel = new JLabel();
+        lifeLabel.setText("Vida:");
 
-		// Panel
-		registerPanel = new JPanel();
+        // Text fields        
+        idTextField = new JTextField();
+        atkTextField = new JTextField();
+        spdTextField = new JTextField();
+        nameTextField = new JTextField();
+        defTextField = new JTextField();
+        lifeTextField = new JTextField();
 
-		// Labels
-		registerLabel = new JLabel();
+        //Combo Box
+        primTypeComboBox = new JComboBox<>();
+        secTypeComboBox = new JComboBox<>();
 
-		idLabel = new JLabel();
-		idLabel.setText("ID Oficial:");
+        // Buttons
+        cancelButton = new JButton();
+        cleanButton = new JButton();
+        saveButton = new JButton();
+        
+        jLabel1 = new JLabel();
+        
 
-		atkLabel = new JLabel();
-		atkLabel.setText("Ataque (ATK):");
+        // Close config
 
-		hpLabel = new JLabel();
-		hpLabel.setText("Vida (HP):");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pokemon Team");
+        
+        // Panel title
+        registerPanel.setBorder(BorderFactory.createTitledBorder("Novo Pokemon"));
 
-		nameLabel = new JLabel();
-		nameLabel.setText("Nome :");
+        
+        // TextField Events
+        idTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTextFieldActionPerformed(evt);
+            }
+        });
 
-		defLabel = new JLabel();
-		defLabel.setText("Defesa (DEF):");
+        nameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTextFieldActionPerformed(evt);
+            }
+        });
 
-		spdLabel = new JLabel();
-		spdLabel.setText("Speed (SPD):");
+        defTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                defTextFieldActionPerformed(evt);
+            }
+        });
 
-		// TextFields
-		idTextField = new JTextField();
-		nameTextField = new JTextField();
-		atkTextField = new JTextField();
-		defTextField = new JTextField();
-		hpTextField = new JTextField();
-		spdTextField = new JTextField();
+        lifeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lifeTextFieldActionPerformed(evt);
+            }
+        });
+        
+        // Buttons events
+        cleanButton.setText("Limpar");
+        cleanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanButtonActionPerformed(evt);
+            }
+        });
+        saveButton.setBackground(new java.awt.Color(0, 255, 0));
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
+        saveButton.setText("Salvar");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
-		// Buttons
-		cancelButton = new JButton();
-		saveButton = new JButton();
+        // Combo box events
+        primTypeComboBox.setModel(new DefaultComboBoxModel<>(new String[] { "Água", "Dragão", "Elétrico", "Fada", "Fantasma", "Fogo", "Gelo", "Inseto", "Lutador", "Metálico", "Normal", "Noturno", "Planta", "Pedra", "Psíquico", "Terra", "Venenoso", "Voador" }));
+        primTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primTypeComboBoxActionPerformed(evt);
+            }
+        });
 
-		// Exit whit close button
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        secTypeComboBox.setModel(new DefaultComboBoxModel<>(new String[] { "-", "Água", "Dragão", "Elétrico", "Fada", "Fantasma", "Fogo", "Gelo", "Inseto", "Lutador", "Metálico", "Normal", "Noturno", "Planta", "Pedra", "Psíquico", "Terra", "Venenoso", "Voador" }));
 
-		// Screen Name Label
-		registerLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18));
-		registerLabel.setText("Cadastro de Pokemon");
+        // Layout
+        GroupLayout registerPanelLayout = new GroupLayout(registerPanel);
+        registerPanel.setLayout(registerPanelLayout);
+        registerPanelLayout.setHorizontalGroup(
+            registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(registerPanelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addGroup(registerPanelLayout.createSequentialGroup()
+                        .addComponent(spdLabel)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spdTextField))
+                    .addGroup(registerPanelLayout.createSequentialGroup()
+                        .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(atkLabel)
+                            .addComponent(primTypeLabel)
+                            .addComponent(idLabel))
+                        .addGap(25, 25, 25)
+                        .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(idTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(atkTextField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(primTypeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(defLabel)
+                    .addComponent(secTypeLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(lifeLabel))
+                .addGap(31, 31, 31)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lifeTextField, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(defTextField, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(secTypeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74))
+            .addGroup(registerPanelLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(cleanButton)
+                .addGap(94, 94, 94)
+                .addComponent(saveButton)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        registerPanelLayout.setVerticalGroup(
+            registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(registerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(idTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(primTypeLabel)
+                    .addComponent(secTypeLabel)
+                    .addComponent(primTypeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(secTypeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(atkLabel)
+                    .addComponent(defLabel)
+                    .addComponent(atkTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(defTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lifeLabel)
+                    .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(spdLabel)
+                        .addComponent(spdTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lifeTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(cleanButton)
+                    .addComponent(saveButton))
+                .addGap(16, 16, 16))
+        );
 
-		// Creating Panel Name
-		registerPanel.setBorder(BorderFactory.createTitledBorder("Novo Pokemon"));
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel1.setText("Cadastro de Pokemon");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-		// Creating Panel Layout
-		GroupLayout registerPanelLayout = new GroupLayout(registerPanel);
-		registerPanel.setLayout(registerPanelLayout);
+        cancelButton.setBackground(new java.awt.Color(255, 0, 0));
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
+        cancelButton.setText("Cancelar");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
-		// Labels Layout
-		registerPanelLayout.setHorizontalGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(registerPanelLayout.createSequentialGroup().addGap(47, 47, 47)
-						.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(hpLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(hpTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(idLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(idTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(atkLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(atkTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-						.addGap(120, 120, 120)
-						.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(spdLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(spdTextField))
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(defLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(defTextField, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-								.addGroup(registerPanelLayout.createSequentialGroup().addComponent(nameLabel)
-										.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(nameTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(28, Short.MAX_VALUE)));
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(cancelButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(registerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel1)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelButton)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
-		// TextFields Layouts
-		registerPanelLayout
-				.setVerticalGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(registerPanelLayout.createSequentialGroup().addGap(19, 19, 19)
-								.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(idLabel)
-										.addComponent(nameLabel)
-										.addComponent(idTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(nameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(25, 25, 25)
-								.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(atkLabel)
-										.addComponent(defLabel)
-										.addComponent(atkTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(defTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE))
-								.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-										.addGroup(registerPanelLayout.createSequentialGroup().addGap(24, 24, 24)
-												.addGroup(registerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-														.addComponent(hpLabel)
-														.addComponent(hpTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(spdLabel)))
-										.addGroup(registerPanelLayout.createSequentialGroup().addGap(18, 18, 18).addComponent(spdTextField,
-												GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-								.addContainerGap(17, Short.MAX_VALUE)));
+        pack();
+    }
 
-		// Buttons
-		cancelButton.setBackground(new java.awt.Color(255, 0, 0));
-		cancelButton.setForeground(new java.awt.Color(255, 255, 255));
-		cancelButton.setText("Cancelar");
+    private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        idTextField.setText("");
+        nameTextField.setText("");
+        atkTextField.setText("");
+        defTextField.setText("");
+        spdTextField.setText("");
+        lifeTextField.setText("");
+    }
 
-		// Cancel Button Listener
-		cancelButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				cancelButtonActionPerformed(evt);
-			}
-		});
+    private void idTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
 
-		saveButton.setBackground(new java.awt.Color(0, 255, 0));
-		saveButton.setForeground(new java.awt.Color(0, 0, 0));
+    }
 
-		// Save Button Listener
-		saveButton.setText("Salvar");
+    private void lifeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                              
 
-		// Button Layout
+    }
 
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addComponent(registerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				.addGroup(GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(registerLabel).addGap(232, 232, 232))
-				.addGroup(layout.createSequentialGroup().addGap(142, 142, 142).addComponent(cancelButton).addGap(110, 110, 110)
-						.addComponent(saveButton).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup().addContainerGap(16, Short.MAX_VALUE).addComponent(registerLabel)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(registerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-										.addComponent(cancelButton).addComponent(saveButton))
-								.addGap(26, 26, 26)));
+    private void defTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                             
 
-		pack();
-	}
+    }
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                              
 
-	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_cancelButtonActionPerformed
+    }
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        String id, name, primType, secType, atk, def, hp, speed;
+        id = idTextField.getText();
+        name = nameTextField.getText();
+        primType = primTypeComboBox.getSelectedItem().toString();
+        secType = secTypeComboBox.getSelectedItem().toString();
+        atk = atkTextField.getText();
+        def = defTextField.getText();
+        hp = lifeTextField.getText();
+        speed = spdTextField.getText();
 
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new RegisterView().setVisible(true);
-			}
-		});
-	}
+        // Check empty fields
+        boolean fields = (id.isEmpty()) || (name.isEmpty())
+                || (atk.isEmpty()) || (speed.isEmpty())
+                || (def.isEmpty()) || (hp.isEmpty());
+                
 
+        if (fields) {
+            JOptionPane.showMessageDialog(this, "Os campos id, nome, ataque, defesa, vida e velocidade precisam ser preenchidos!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            // Create pokemon instance
+            Pokemon pokemon = new Pokemon();
+            pokemon.setOfficial_id(Integer.parseInt(id));
+            pokemon.setName(name);
+            pokemon.setPrimary_type(primType);
+            pokemon.setSecond_type(secType);
+            pokemon.setAtk(Integer.parseInt(atk));
+            pokemon.setDef(Integer.parseInt(def));
+            pokemon.setHp(Integer.parseInt(hp));
+            pokemon.setSpeed(Integer.parseInt(speed));
+            
+            
+            // Save in DB
+
+            PokemonDAO pokemonDao = new PokemonDAO();
+            pokemonDao.savePokemon(pokemon);
+            
+            JOptionPane.showMessageDialog(null, "Pokemon " + nameTextField.getText() + " cadastrado com sucesso!");
+
+            // Clean fields 
+            idTextField.setText("");
+            nameTextField.setText("");
+            atkTextField.setText("");
+            defTextField.setText("");
+            spdTextField.setText("");
+            lifeTextField.setText("");
+            
+        }
+
+    }
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        ListView listView = new ListView();
+        listView.setVisible(true);
+        dispose();
+    }
+    private void primTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }
+
+
+    public static void main(String args[]) {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegisterView().setVisible(true);
+
+            }
+        });
+    }
+     private JLabel atkLabel;
+    private JTextField atkTextField;
+    private JButton cancelButton;
+    private JButton cleanButton;
+    private JLabel defLabel;
+    private JTextField defTextField;
+    private JLabel idLabel;
+    private JTextField idTextField;
+    private JLabel jLabel1;
+    private JLabel lifeLabel;
+    private JTextField lifeTextField;
+    private JLabel nameLabel;
+    private JTextField nameTextField;
+    private JComboBox<String> primTypeComboBox;
+    private JLabel primTypeLabel;
+    private JPanel registerPanel;
+    private JButton saveButton;
+    private JComboBox<String> secTypeComboBox;
+    private JLabel secTypeLabel;
+    private JLabel spdLabel;
+    private JTextField spdTextField;
 }

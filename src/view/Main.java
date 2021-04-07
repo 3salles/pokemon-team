@@ -16,11 +16,14 @@ public class Main {
 		 pokemonDao.savePokemon(buizel);
 		 
 		 Pokemon growlithe = new Pokemon(58, "Growlithe", "Fogo", null, 70, 45, 55,
-		 60); pokemonDao.savePokemon(growlithe);
+		 60); pokemonDao.savePokemon(growlithe); */
 		
-		pokemonDao.savePokemon(squirtle);
+		
         
-        Pokemon squirtle = new Pokemon(7, "Squirtle", "Água", null, 48, 65, 44, 43); */
+        Pokemon squirtle = new Pokemon(007, "Squirtle", "Água", null, 48, 65, 44, 43); 
+        pokemonDao.savePokemon(squirtle);
+                 
+               
 
         // List Pokemons
         System.out.println("ID - Pokemon - HP - ATK - DEF - SPEED");
@@ -31,7 +34,7 @@ public class Main {
         }
 
         // Delete Pokemon
-        /*pokemonDao.deletePokemon(squirtle);*/
+        //pokemonDao.deletePokemon(squirtle);
 
     }
 }

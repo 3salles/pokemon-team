@@ -1,1 +1,5 @@
-/bin/
+build/ 
+nbproject/
+build.xml
+manifest.mf
+postgresql-42.2.19.jar

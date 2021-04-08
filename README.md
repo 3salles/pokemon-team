@@ -21,18 +21,48 @@
 
 ## 🗂 Table of Contents
 
-- [About the Project](#book-about-the-project)
-  - [Technologies](#computer-technologies)
-- [Author](#woman_technologist-author)
+* [About the Project](#book-about-the-project)
+  * [Layout](#art-layout)
+  * [Technologies](#computer-technologies)
+  * [Features](#sparkles-features)
+*[Installation](#bricks-installation)
+  * [Front-end](#lipstick-front-end)
+  * [Back-end](#file_cabinet-back-end)
+* [Author](#woman_technologist-author)
 
 ## :book: About The Project
 
 This project was created during Programming Paradigms classes at [UFMA](https://portalpadrao.ufma.br/site). The ideia of Pokemon Team Manager is to create your own pokemon team and sees its atack and defense power.
 
+### :art: Layout
+
+This is the Register Page
+
+![01](https://user-images.githubusercontent.com/62452619/113948991-969ad800-97e4-11eb-8fb2-ac3704db159d.png)
+
+Register a new Pokemon
+
+![02](https://user-images.githubusercontent.com/62452619/113948994-97cc0500-97e4-11eb-96b9-4ec5e192b45d.png)
+
+When the user don't fill a field, it opens a alert popup message:
+
+![04](https://user-images.githubusercontent.com/62452619/113949004-9a2e5f00-97e4-11eb-9918-7f1950dcfa19.png)
+
+When the user register a new pokemon successfully, it opens a popup success message:
+
+![03](https://user-images.githubusercontent.com/62452619/113949001-98fd3200-97e4-11eb-97fd-80d21720efa2.png)
 ### :computer: Technologies
 
 - [Java](https://www.java.com/pt-BR/)
 - [PostgreSQL](https://www.postgresql.org)
+- [Swing]()
+
+### :sparkles: Features
+
+- [x] Register Screen
+- [ ] List Screen
+- [ ] Edit/Update/Delete Screen
+- [ ] Create team Screen
 
 ## :bricks: Installation
 
@@ -51,6 +81,16 @@ $ cd pokemon-team
 
 🚨 If you don't have git in your machine, you can install it [here](https://git-scm.com/downloads).
 
+## :lipstick: Front-end
+
+Open `gui` folder and run:
+```shell
+javac RegisterView.java
+java RegisterView
+
+```
+
+And enjoy the app!! :laughing:
 ## :file_cabinet: Back-end
 
 In `db/JdbcConnection.java` archive, change the follwing lines to its own user and password database:
@@ -81,7 +121,7 @@ java CreateTable
 
 ```
 
-To insert, list and delete pokemon, just romove comments in insert area and run the `view\Main.java`archive:
+🚨 OPTIONAL: To insert, list and delete pokemon, just romove comments in insert area and run the `view\Main.java`archive:
 
 ```shell
 

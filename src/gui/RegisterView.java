@@ -3,6 +3,8 @@ package gui;
 import javax.swing.*;
 import model.Pokemon;
 import dao.PokemonDAO;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class RegisterView extends JFrame {
@@ -57,7 +59,17 @@ public class RegisterView extends JFrame {
 
         // Close config
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener (new WindowAdapter () {
+            public void windowClosing(WindowEvent e){
+                int choose = JOptionPane.showConfirmDialog(null, 
+                        "Deseja realmente sair?", "Sair - Confirmação", 
+                        JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (choose == JOptionPane.YES_OPTION){
+                     System.exit(1);
+                 }
+            }
+        });
+        
         setTitle("Pokemon Team");
         
         // Panel title

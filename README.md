@@ -51,6 +51,10 @@ When the user don't fill a field, it opens a alert popup message:
 When the user register a new pokemon successfully, it opens a popup success message:
 
 ![03](https://user-images.githubusercontent.com/62452619/113949001-98fd3200-97e4-11eb-97fd-80d21720efa2.png)
+
+Confirm exit system message popup:
+
+![05](https://user-images.githubusercontent.com/62452619/113953360-0366a000-97ee-11eb-953f-1cfca0910499.png)
 ### :computer: Technologies
 
 - [Java](https://www.java.com/pt-BR/)

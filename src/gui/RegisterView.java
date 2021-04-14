@@ -1,42 +1,59 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
 import model.Pokemon;
 import dao.PokemonDAO;
-import model.PokemonTable;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import gui.Home;
+
+
 
 
 public class RegisterView extends JFrame {
+    
+    private JLabel atkLabel;
+    private JTextField atkTextField;
+    private JButton cancelButton;
+    private JButton cleanButton;
+    private JLabel defLabel;
+    private JTextField defTextField;
+    private JLabel idLabel;
+    private JTextField idTextField;
+    private JLabel titleLabel;
+    private JLabel lifeLabel;
+    private JTextField lifeTextField;
+    private JLabel nameLabel;
+    private JTextField nameTextField;
+    private JComboBox<String> primTypeComboBox;
+    private JLabel primTypeLabel;
+    private JPanel registerPanel;
+    private JButton saveButton;
+    private JComboBox<String> secTypeComboBox;
+    private JLabel secTypeLabel;
+    private JLabel spdLabel;
+    private JTextField spdTextField;
     
     public RegisterView() {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
-   
+    
     private void initComponents() {
         // Create Register Panel
         registerPanel = new JPanel();
 
         // Create Labels
-        idLabel = new JLabel();
-        idLabel.setText("ID:");
-        nameLabel = new JLabel();
-        nameLabel.setText("Nome:");
-        primTypeLabel = new JLabel();
-        primTypeLabel.setText("Tipo 1:");
-        secTypeLabel = new JLabel();
-        secTypeLabel.setText("Tipo 2:");
-        atkLabel = new JLabel();
-        atkLabel.setText("Ataque:");
-        defLabel = new JLabel();
-        defLabel.setText("Defesa:");
-        spdLabel = new JLabel();
-        spdLabel.setText("Agilidade:");        
-        lifeLabel = new JLabel();
-        lifeLabel.setText("Vida:");
+        idLabel = new JLabel("ID:");
+        nameLabel = new JLabel("Nome:");
+        primTypeLabel = new JLabel("Tipo 1:");
+        secTypeLabel = new JLabel("Tipo 2:");
+        atkLabel = new JLabel("Ataque:");
+        defLabel = new JLabel("Defesa:");
+        spdLabel = new JLabel("Agilidade:");       
+        lifeLabel = new JLabel("Vida:");
+
 
         // Text fields        
         idTextField = new JTextField();
@@ -51,11 +68,12 @@ public class RegisterView extends JFrame {
         secTypeComboBox = new JComboBox<>();
 
         // Buttons
-        cancelButton = new JButton();
-        cleanButton = new JButton();
-        saveButton = new JButton();
+        cancelButton = new JButton("Cancelar");
+        cleanButton = new JButton("Limpar");
+        saveButton = new JButton("Salvar");
         
-        titleLabel = new JLabel();
+        titleLabel = new JLabel("Cadastro de Pokemon");
+        titleLabel.setFont(new Font("Liberation Sans", 1, 18));
         
 
         // Close config
@@ -78,50 +96,56 @@ public class RegisterView extends JFrame {
 
         
         // TextField Events
-        idTextField.addActionListener(new java.awt.event.ActionListener() {
+        idTextField.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTextFieldActionPerformed(evt);
             }
         });
 
-        nameTextField.addActionListener(new java.awt.event.ActionListener() {
+        nameTextField.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextFieldActionPerformed(evt);
             }
         });
 
-        defTextField.addActionListener(new java.awt.event.ActionListener() {
+        defTextField.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 defTextFieldActionPerformed(evt);
             }
         });
 
-        lifeTextField.addActionListener(new java.awt.event.ActionListener() {
+        lifeTextField.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lifeTextFieldActionPerformed(evt);
             }
         });
         
         // Buttons events
-        cleanButton.setText("Limpar");
-        cleanButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cleanButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 cleanButtonActionPerformed(evt);
             }
         });
-        saveButton.setBackground(new java.awt.Color(0, 255, 0));
-        saveButton.setForeground(new java.awt.Color(255, 255, 255));
-        saveButton.setText("Salvar");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveButton.setBackground(new Color(0, 255, 0));
+        saveButton.setForeground(new Color(255, 255, 255));
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 saveButtonActionPerformed(evt);
+            }
+        });
+        
+        cancelButton.setBackground(new Color(255, 0, 0));
+        cancelButton.setForeground(new Color(255, 255, 255));
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
             }
         });
 
         // Combo box events
         primTypeComboBox.setModel(new DefaultComboBoxModel<>(new String[] { "Água", "Dragão", "Elétrico", "Fada", "Fantasma", "Fogo", "Gelo", "Inseto", "Lutador", "Metálico", "Normal", "Noturno", "Planta", "Pedra", "Psíquico", "Terra", "Venenoso", "Voador" }));
-        primTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        primTypeComboBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 primTypeComboBoxActionPerformed(evt);
             }
         });
@@ -204,19 +228,6 @@ public class RegisterView extends JFrame {
                     .addComponent(saveButton))
                 .addGap(16, 16, 16))
         );
-
-        titleLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        titleLabel.setText("Cadastro de Pokemon");
-        titleLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        cancelButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
-        cancelButton.setText("Cancelar");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
-            }
-        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,8 +338,8 @@ public class RegisterView extends JFrame {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        PokemonTable pokeFrame = new PokemonTable();
-        pokeFrame.setVisible(true);
+        Home homeFrame = new Home();
+        homeFrame.setVisible(true);
         dispose();
     }
     private void primTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -336,23 +347,7 @@ public class RegisterView extends JFrame {
 
 
     public static void main(String args[]) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RegisterView().setVisible(true);
@@ -360,25 +355,5 @@ public class RegisterView extends JFrame {
             }
         });
     }
-     private JLabel atkLabel;
-    private JTextField atkTextField;
-    private JButton cancelButton;
-    private JButton cleanButton;
-    private JLabel defLabel;
-    private JTextField defTextField;
-    private JLabel idLabel;
-    private JTextField idTextField;
-    private JLabel titleLabel;
-    private JLabel lifeLabel;
-    private JTextField lifeTextField;
-    private JLabel nameLabel;
-    private JTextField nameTextField;
-    private JComboBox<String> primTypeComboBox;
-    private JLabel primTypeLabel;
-    private JPanel registerPanel;
-    private JButton saveButton;
-    private JComboBox<String> secTypeComboBox;
-    private JLabel secTypeLabel;
-    private JLabel spdLabel;
-    private JTextField spdTextField;
+     
 }

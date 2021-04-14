@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 import model.Pokemon;
 import dao.PokemonDAO;
+import model.PokemonTable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -54,7 +55,7 @@ public class RegisterView extends JFrame {
         cleanButton = new JButton();
         saveButton = new JButton();
         
-        jLabel1 = new JLabel();
+        titleLabel = new JLabel();
         
 
         // Close config
@@ -204,9 +205,9 @@ public class RegisterView extends JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Cadastro de Pokemon");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        titleLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        titleLabel.setText("Cadastro de Pokemon");
+        titleLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,14 +232,14 @@ public class RegisterView extends JFrame {
                         .addComponent(registerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
-                        .addComponent(jLabel1)))
+                        .addComponent(titleLabel)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
@@ -326,12 +327,11 @@ public class RegisterView extends JFrame {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        ListView listView = new ListView();
-        listView.setVisible(true);
+        PokemonTable pokeFrame = new PokemonTable();
+        pokeFrame.setVisible(true);
         dispose();
     }
     private void primTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
     }
 
 
@@ -368,7 +368,7 @@ public class RegisterView extends JFrame {
     private JTextField defTextField;
     private JLabel idLabel;
     private JTextField idTextField;
-    private JLabel jLabel1;
+    private JLabel titleLabel;
     private JLabel lifeLabel;
     private JTextField lifeTextField;
     private JLabel nameLabel;

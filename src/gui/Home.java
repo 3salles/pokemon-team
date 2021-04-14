@@ -6,7 +6,7 @@ import model.PokemonTable;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import model.PokemonTable;
+
 
 
 public class Home extends JFrame {

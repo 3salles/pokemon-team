@@ -1,11 +1,14 @@
 package gui;
 
 import javax.swing.*;
-import model.Pokemon;
-import dao.PokemonDAO;
-import model.PokemonTable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import model.Pokemon;
+import dao.PokemonDAO;
+import gui.Home;
+
+
 
 
 public class RegisterView extends JFrame {
@@ -327,8 +330,8 @@ public class RegisterView extends JFrame {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        PokemonTable pokeFrame = new PokemonTable();
-        pokeFrame.setVisible(true);
+        Home homeFrame = new Home();
+        homeFrame.setVisible(true);
         dispose();
     }
     private void primTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -336,23 +339,7 @@ public class RegisterView extends JFrame {
 
 
     public static void main(String args[]) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RegisterView().setVisible(true);

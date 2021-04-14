@@ -1,7 +1,7 @@
 package gui;
 
 import gui.RegisterView;
-import model.PokemonTable;
+import gui.PokemonView;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -25,8 +25,8 @@ public class Home extends JFrame {
         titleLabel = new JLabel("POKEMON TEAM");
         titleLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18));
         
-        registerButton = new JButton("Cadastrar");
-        listButton = new JButton("Listar");
+        registerButton = new JButton("Cadastrar Pokemon");
+        listButton = new JButton("Listar Pokemons");
 
         // Close config
 
@@ -62,7 +62,7 @@ public class Home extends JFrame {
         javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -96,9 +96,9 @@ public class Home extends JFrame {
         dispose();
     }
 
-    private void listButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        PokemonTable pokeFrame = new PokemonTable();
-        pokeFrame.setVisible(true);
+    private void listButtonActionPerformed(ActionEvent evt) {                                           
+        PokemonView pokeView = new PokemonView();
+        pokeView.setVisible(true);
         dispose();
     }
 

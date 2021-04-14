@@ -1,22 +1,54 @@
 package model;
 
 import dao.PokemonDAO;
-import javax.swing.table.AbstractTableModel;
 import java.util.List;
+import utils.Toggle;
+
+import javax.swing.table.*;
+import javax.swing.event.*;
 
 
-public class PokemonTableModel extends AbstractTableModel {
+public class PokemonTableModel extends AbstractTableModel implements TableModelListener {
     PokemonDAO pokeDao;
     List<Pokemon> pokemons;
     List<String> columns;
+    boolean isEdit;
+    Toggle editable;
     
     public PokemonTableModel (PokemonDAO  pokeDao){
         this.pokeDao = pokeDao;
         pokemons = pokeDao.getPokemons();
         columns = List.of("ID", "Nome", "Tipo 1", "Tipo 2", "Ataque", "Defesa", "Agilidade", "Vida");
+        this.addTableModelListener(this);
         
     }
     
+    
+   public void tableChanged(TableModelEvent event){
+       int index = event.getFirstRow();
+       Pokemon pokemon = pokemons.get(index);
+       System.out.println(index);
+       pokeDao.updatePokemons(pokemon);
+   }
+   
+   public void deletePokemon(int id) throws Exception{
+       for (Pokemon poke: pokemons){
+           if(poke.getOfficial_id() == id){
+               pokemons.remove(poke);
+               break;
+           }
+       }
+       pokeDao.delPokemon(id);
+       fireTableDataChanged();
+   }
+   
+   
+   
+    @Override
+    public boolean isCellEditable(int row, int col){
+ 
+        return true;
+    } 
     @Override
     public int getRowCount(){
         return pokemons.size();

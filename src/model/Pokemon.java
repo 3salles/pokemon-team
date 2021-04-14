@@ -13,6 +13,10 @@ public class Pokemon {
 
     public Pokemon() {
     }
+    
+    public Pokemon(int official_id){
+        this.official_id = official_id;
+    }
 
     public Pokemon(
             int official_id,

@@ -36,6 +36,7 @@ This project was created during Programming Paradigms classes at [UFMA](https://
 
 ### :art: Layout
 
+### Version 2.0
 This is the Register Page
 
 ![01](https://user-images.githubusercontent.com/62452619/113948991-969ad800-97e4-11eb-8fb2-ac3704db159d.png)
@@ -52,9 +53,22 @@ When the user register a new pokemon successfully, it opens a popup success mess
 
 ![03](https://user-images.githubusercontent.com/62452619/113949001-98fd3200-97e4-11eb-97fd-80d21720efa2.png)
 
+<<<<<<< HEAD
 Confirm exit system message popup:
 
 ![05](https://user-images.githubusercontent.com/62452619/113953360-0366a000-97ee-11eb-953f-1cfca0910499.png)
+=======
+### Version 2.5
+
+Home screen
+![06](https://user-images.githubusercontent.com/62452619/114790364-05cf7980-9d5b-11eb-909f-ebd65916b4b7.png)
+
+List pokemons screen
+![07](https://user-images.githubusercontent.com/62452619/114790367-06681000-9d5b-11eb-9b83-3885983f67c5.png)
+
+Delete by ID popup
+![08](https://user-images.githubusercontent.com/62452619/114790371-07993d00-9d5b-11eb-9779-78750feecb28.png)
+>>>>>>> release/2.5
 ### :computer: Technologies
 
 - [Java](https://www.java.com/pt-BR/)
@@ -64,7 +78,7 @@ Confirm exit system message popup:
 ### :sparkles: Features
 
 - [x] Register Screen
-- [ ] List Screen
+- [x] List Screen
 - [ ] Edit/Update/Delete Screen
 - [ ] Create team Screen
 

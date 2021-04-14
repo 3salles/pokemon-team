@@ -9,6 +9,7 @@ import java.util.List;
 import db.JdbcConnection;
 import model.Pokemon;
 
+
 public class PokemonDAO {
 	
 	public void savePokemon(Pokemon pokemon) {
@@ -118,7 +119,39 @@ public class PokemonDAO {
 
 	}
 	
-	
+	public void delPokemon(int id) {
+            String sql = "DELETE FROM pokemons WHERE official_id = ?";
+            Connection connection = null;
+            PreparedStatement pstm = null;
+      
+            
+            try {
+			connection = JdbcConnection.getConnection();
+                        
+                        pstm = connection.prepareStatement(sql);
+                        pstm.setInt(1, id);
+                        pstm.execute(); 
+
+			
+		} catch (Exception exception){
+			exception.printStackTrace();
+		} finally {
+			
+			//Close all connections
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				
+				if(connection !=null) {
+					connection.close();
+				}
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
+		}
+            
+        }
 	public void deletePokemon(Pokemon pokemon) {
 		String sql = "DELETE FROM pokemons WHERE official_id = ?";
 		
@@ -132,6 +165,7 @@ public class PokemonDAO {
 			pstm.setInt(1, pokemon.getOfficial_id());
 			
 			pstm.execute();
+                        pstm.executeUpdate();
 			
 			String pokemonName = pokemon.getName();
 			
@@ -156,4 +190,43 @@ public class PokemonDAO {
 		}
 	}
 	
+        
+        public void updatePokemons(Pokemon pokemon){
+            String sql = "UPDATE pokemons SET name=?, primary_type=?, second_type=?, atk=?, def=?, hp=?, speed=? WHERE official_id= ?";
+		
+		
+		Connection connection = null;
+		PreparedStatement pstm = null;
+                
+                try {
+                
+                       connection = JdbcConnection.getConnection();
+			
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, pokemon.getName());
+			pstm.setString(2, pokemon.getPrimary_type());
+			pstm.setString(3, pokemon.getSecond_type());
+			pstm.setInt(4, pokemon.getAtk());
+			pstm.setInt(5, pokemon.getDef());
+			pstm.setInt(6, pokemon.getHp());
+			pstm.setInt(7, pokemon.getSpeed());
+                        pstm.setInt(8, pokemon.getOfficial_id());
+                } catch (Exception exception){
+			exception.printStackTrace();
+		} finally {
+			
+			//Close all connections
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				
+				if(connection !=null) {
+					connection.close();
+				}
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
+		}
+        }
 }

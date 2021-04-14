@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 import model.PokemonTableModel;
 import dao.PokemonDAO;
+import utils.Toggle;
 
 
 public class PokemonView extends JFrame{
@@ -15,6 +16,7 @@ public class PokemonView extends JFrame{
     private JTable pokeTable;
     private JScrollPane scroll;
     private JButton  registerButton, editButton, saveButton, deleteButton;
+    Toggle editable;
     
     public PokemonView(){
         initComponents();
@@ -65,6 +67,27 @@ public class PokemonView extends JFrame{
         saveButton = new JButton("Salvar");
         saveButton.setBackground(new Color(0, 255, 0));
         saveButton.setForeground(new Color(255, 255, 255));
+        saveButton.setEnabled(false);
+        
+        // Buttons Events
+
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
+        
+        deleteButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        
+        editButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
         
         // Layout
         javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
@@ -109,7 +132,31 @@ public class PokemonView extends JFrame{
         pack();
                
     }
+    private void registerButtonActionPerformed(ActionEvent evt) {                                            
+        RegisterView registerFrame = new RegisterView();
+        registerFrame.setVisible(true);
+        dispose();
+    }
     
+    private void deleteButtonActionPerformed(ActionEvent evt) {                                            
+        int id = Integer.parseInt(JOptionPane.showInputDialog(this, "Digite o ID do Pokemon:"));
+        PokemonDAO pokeDao = new PokemonDAO();
+        PokemonTableModel pokeTableModel = new PokemonTableModel(pokeDao);
+         
+       
+        try {
+            pokeTableModel.deletePokemon(id);
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(this, "Não existe pokemon com este ID!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+    }
+
+    private void editButtonActionPerformed(ActionEvent evt){
+        saveButton.setEnabled(true);
+        
+    }
     public static void main(String args[]){
         EventQueue.invokeLater(new Runnable() {
             public void run(){

@@ -261,7 +261,7 @@ public class RegisterView extends JFrame {
         pack();
     }
 
-    private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void cleanButtonActionPerformed(ActionEvent evt) {                                            
         idTextField.setText("");
         nameTextField.setText("");
         atkTextField.setText("");
@@ -270,22 +270,22 @@ public class RegisterView extends JFrame {
         lifeTextField.setText("");
     }
 
-    private void idTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void idTextFieldActionPerformed(ActionEvent evt) {                                            
 
     }
 
-    private void lifeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void lifeTextFieldActionPerformed(ActionEvent evt) {                                              
 
     }
 
-    private void defTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void defTextFieldActionPerformed(ActionEvent evt) {                                             
 
     }
-    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void nameTextFieldActionPerformed(ActionEvent evt) {                                              
 
     }
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void saveButtonActionPerformed(ActionEvent evt) {                                           
         String id, name, primType, secType, atk, def, hp, speed;
         id = idTextField.getText();
         name = nameTextField.getText();
@@ -337,12 +337,12 @@ public class RegisterView extends JFrame {
 
     }
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void cancelButtonActionPerformed(ActionEvent evt) {                                             
         Home homeFrame = new Home();
         homeFrame.setVisible(true);
         dispose();
     }
-    private void primTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void primTypeComboBoxActionPerformed(ActionEvent evt) {                                                 
     }
 
 

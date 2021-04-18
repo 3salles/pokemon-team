@@ -40,6 +40,37 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
        fireTableDataChanged();
    }
    
+   public void setValueAt(Object aValue, int row, int column){
+        Pokemon pokemon = pokemons.get(row);
+        
+        switch (column){
+            case 0: 
+                pokemon.setOfficial_id((int) aValue);
+                break;    
+            case 1: 
+                pokemon.setName((String) aValue);
+                break;
+            case 2: 
+                pokemon.setPrimary_type((String) aValue);
+                break;
+            case 3: 
+                pokemon.setSecond_type((String) aValue);
+                break;
+            case 4: 
+                pokemon.setAtk((int) aValue);
+                break;
+            case 5: 
+                pokemon.setDef((int) aValue);
+                break;
+            case 6: 
+                pokemon.setSpeed((int) aValue);
+                break;
+            case 7: pokemon.setHp((int) aValue);
+                break;
+            default: throw new IndexOutOfBoundsException("columnINdex out of bounds");
+        }
+        
+    }
    
    
     @Override
@@ -73,6 +104,9 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
         }
         
     }
+    
+    
+    
     
     @Override
     public String getColumnName(int column){

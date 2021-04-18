@@ -7,16 +7,14 @@ import java.awt.event.*;
 
 import model.PokemonTableModel;
 import dao.PokemonDAO;
-import utils.Toggle;
-
 
 public class PokemonView extends JFrame{
     
     private JLabel titleLabel;
     private JTable pokeTable;
     private JScrollPane scroll;
-    private JButton  registerButton, editButton, saveButton, deleteButton;
-    Toggle editable;
+    private JButton  registerButton, deleteButton;
+
     
     public PokemonView(){
         initComponents();
@@ -56,19 +54,12 @@ public class PokemonView extends JFrame{
         registerButton = new JButton("Cadastrar");
         registerButton.setBackground(new java.awt.Color(0, 255, 255));
         
-        editButton = new JButton("Editar");
-        editButton.setBackground(new java.awt.Color(255, 153, 0));
-        editButton.setForeground(new java.awt.Color(255, 255, 255));
-        
+                
         deleteButton = new JButton("Deletar");
         deleteButton.setBackground(new Color(255, 0, 0));
         deleteButton.setForeground(new Color(255, 255, 255));
         
-        saveButton = new JButton("Salvar");
-        saveButton.setBackground(new Color(0, 255, 0));
-        saveButton.setForeground(new Color(255, 255, 255));
-        saveButton.setEnabled(false);
-        
+         
         // Buttons Events
 
         registerButton.addActionListener(new ActionListener() {
@@ -83,50 +74,41 @@ public class PokemonView extends JFrame{
             }
         });
         
-        editButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-        
+                
         // Layout
-        javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGap(285, 285, 285)
+                .addComponent(titleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(titleLabel))
+                        .addContainerGap(34, Short.MAX_VALUE)
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(registerButton)
-                                .addGap(79, 79, 79)
-                                .addComponent(editButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deleteButton)
-                                .addGap(69, 69, 69)
-                                .addComponent(saveButton))
-                            .addComponent(scroll, GroupLayout.PREFERRED_SIZE, 549,GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(212, 212, 212)
+                        .addComponent(registerButton)
+                        .addGap(69, 69, 69)
+                        .addComponent(deleteButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addComponent(titleLabel)
-                .addGap(26, 26, 26)
-                .addComponent(scroll, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton)
-                    .addComponent(editButton)
-                    .addComponent(deleteButton)
-                    .addComponent(saveButton))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(deleteButton))
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -153,10 +135,7 @@ public class PokemonView extends JFrame{
         
     }
 
-    private void editButtonActionPerformed(ActionEvent evt){
-        saveButton.setEnabled(true);
-        
-    }
+    
     public static void main(String args[]){
         EventQueue.invokeLater(new Runnable() {
             public void run(){

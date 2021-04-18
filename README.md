@@ -59,7 +59,7 @@ Home screen
 ![06](https://user-images.githubusercontent.com/62452619/114790364-05cf7980-9d5b-11eb-909f-ebd65916b4b7.png)
 
 List pokemons screen
-![07](https://user-images.githubusercontent.com/62452619/114790367-06681000-9d5b-11eb-9b83-3885983f67c5.png)
+![08](https://user-images.githubusercontent.com/62452619/115163804-9373d780-a081-11eb-8fc3-2b69af91451b.png)
 
 Delete by ID popup
 ![08](https://user-images.githubusercontent.com/62452619/114790371-07993d00-9d5b-11eb-9779-78750feecb28.png)

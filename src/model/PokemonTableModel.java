@@ -2,7 +2,6 @@ package model;
 
 import dao.PokemonDAO;
 import java.util.List;
-import utils.Toggle;
 
 import javax.swing.table.*;
 import javax.swing.event.*;
@@ -13,7 +12,6 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
     List<Pokemon> pokemons;
     List<String> columns;
     boolean isEdit;
-    Toggle editable;
     
     public PokemonTableModel (PokemonDAO  pokeDao){
         this.pokeDao = pokeDao;
@@ -46,7 +44,6 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
    
     @Override
     public boolean isCellEditable(int row, int col){
- 
         return true;
     } 
     @Override

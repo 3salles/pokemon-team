@@ -71,7 +71,7 @@ List pokemons screen
 
 Delete by ID popup
 
-![08](https://user-images.githubusercontent.com/62452619/114790371-07993d00-9d5b-11eb-9779-78750feecb28.png)
+![09](https://user-images.githubusercontent.com/62452619/115165176-00d43800-a083-11eb-8842-a48650fada20.png)
 
 ### :computer: Technologies
 

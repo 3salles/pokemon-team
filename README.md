@@ -57,7 +57,7 @@ When the user register a new pokemon successfully, it opens a popup success mess
 Confirm exit system message popup:
 
 ![05](https://user-images.githubusercontent.com/62452619/113953360-0366a000-97ee-11eb-953f-1cfca0910499.png)
-=======
+
 ### Version 2.5
 
 Home screen
@@ -66,7 +66,8 @@ Home screen
 
 List pokemons screen
 
-![07](https://user-images.githubusercontent.com/62452619/114790367-06681000-9d5b-11eb-9b83-3885983f67c5.png)
+![08](https://user-images.githubusercontent.com/62452619/115163804-9373d780-a081-11eb-8fc3-2b69af91451b.png)
+
 
 Delete by ID popup
 

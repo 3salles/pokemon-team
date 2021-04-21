@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-    A CRUD  Pokemon Manager Team porjet to aplly concepts learned in Programming Paradigms at UFMA using Java languange.
+    A CRUD  Pokemon Manager Team project to apply concepts learned in Programming Paradigms at UFMA using Java language.
     <br />
     <br />
     <a href="README.md">🇺🇸English</a>
@@ -28,11 +28,12 @@
 *[Installation](#bricks-installation)
   * [Front-end](#lipstick-front-end)
   * [Back-end](#file_cabinet-back-end)
+*[License](#page_facing_up-license)
 * [Author](#woman_technologist-author)
 
 ## :book: About The Project
 
-This project was created during Programming Paradigms classes at [UFMA](https://portalpadrao.ufma.br/site). The ideia of Pokemon Team Manager is to create your own pokemon team and sees its atack and defense power.
+This project was created during Programming Paradigms classes at [UFMA](https://portalpadrao.ufma.br/site). The ideia of Pokemon Team Manager is to create your own pokemon team and sees its attack and defense power.
 
 ### :art: Layout
 
@@ -83,7 +84,7 @@ Delete by ID popup
 
 - [x] Register Screen
 - [x] List Screen
-- [ ] Edit/Update/Delete Screen
+- [x] Edit/Update/Delete Screen
 - [ ] Create team Screen
 
 ## :bricks: Installation
@@ -107,8 +108,8 @@ $ cd pokemon-team
 
 Open `gui` folder and run:
 ```shell
-javac RegisterView.java
-java RegisterView
+javac Home.java
+java Home
 
 ```
 
@@ -151,6 +152,10 @@ javac Main.java
 java Main
 
 ```
+
+## :page_facing_up: License
+
+This project uses [MIT](https://github.com/3salles/pokemon-team/blob/main/LICENSE) lincense.
 
 ## :woman_technologist: Author
 

@@ -84,18 +84,13 @@ public class RegisterView extends JFrame {
                         "Deseja realmente sair?", "Sair - Confirmação", 
                         JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (choose == JOptionPane.YES_OPTION){
-<<<<<<< HEAD
                     System.exit(1);
                  }
             }
         });
-=======
-                     System.exit(1);
-                 }
-            }
-        });
+
+
         
->>>>>>> release/2.5
         setTitle("Pokemon Team");
         
         // Panel title

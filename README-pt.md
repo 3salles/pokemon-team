@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-    A CRUD  Pokemon Manager Team project to apply concepts learned in Programming Paradigms at UFMA using Java language.
+    Um projeto CRUD de gerenciamento de times Pokemon para aplicar os conceitos aprendidos na cadeira de Paradigmas da Programação da UFMA usando a linguagem de Java.
     <br />
     <br />
     <a href="README.md">🇺🇸English</a>
@@ -21,60 +21,60 @@
 
 ## 🗂 Table of Contents
 
-* [About the Project](#book-about-the-project)
+* [Sobre o Projeto](#book-sobre-o-projeto)
   * [Layout](#art-layout)
-  * [Technologies](#computer-technologies)
+  * [Tecnologias](#computer-tecnologias)
   * [Features](#sparkles-features)
-*[Installation](#bricks-installation)
+*[Instalação](#bricks-instalação)
   * [Front-end](#lipstick-front-end)
   * [Back-end](#file_cabinet-back-end)
-*[License](#page_facing_up-license)
-* [Author](#woman_technologist-author)
+*[Licença](#page_facing_up-licença)
+* [Autoura](#woman_technologist-autora)
 
-## :book: About The Project
+## :book: Sobre o Projeto
 
-This project was created during Programming Paradigms classes at [UFMA](https://portalpadrao.ufma.br/site). The ideia of Pokemon Team Manager is to create your own pokemon team and sees its attack and defense power.
+Este projeto foi criado durante as aulas de Paradigmas da Programação da [UFMA](https://portalpadrao.ufma.br/site).A ideia do Gerenciamento de Times Pokemon é de criar seu time pokemon e ver o poder de ataque e defesa dele. 
 
 ### :art: Layout
 
-### Version 2.0
-This is the Register Page
+### Versão 2.0
+Esta é a página de cadastro de Pokemon
 
 ![01](https://user-images.githubusercontent.com/62452619/113948991-969ad800-97e4-11eb-8fb2-ac3704db159d.png)
 
-Register a new Pokemon
+Cadastre novo Pokemon
 
 ![02](https://user-images.githubusercontent.com/62452619/113948994-97cc0500-97e4-11eb-96b9-4ec5e192b45d.png)
 
-When the user don't fill a field, it opens a alert popup message:
+Quando o usuário não preenche um campo, aparece uma mensagem de popup alertando:
 
 ![04](https://user-images.githubusercontent.com/62452619/113949004-9a2e5f00-97e4-11eb-9918-7f1950dcfa19.png)
 
-When the user register a new pokemon successfully, it opens a popup success message:
+Quando o usuário cadastra um novo pokemon, aparece uma mensagem de popup de sucesso:
 
 ![03](https://user-images.githubusercontent.com/62452619/113949001-98fd3200-97e4-11eb-97fd-80d21720efa2.png)
 
 
-Confirm exit system message popup:
+Confirmação de saída:
 
 ![05](https://user-images.githubusercontent.com/62452619/113953360-0366a000-97ee-11eb-953f-1cfca0910499.png)
 
-### Version 2.5
+### Versão 2.5
 
-Home screen
+Tela principal:
 
 ![06](https://user-images.githubusercontent.com/62452619/114790364-05cf7980-9d5b-11eb-909f-ebd65916b4b7.png)
 
-List pokemons screen
+Tela de visualizar pokemons cadastrados:
 
 ![08](https://user-images.githubusercontent.com/62452619/115163804-9373d780-a081-11eb-8fc3-2b69af91451b.png)
 
 
-Delete by ID popup
+Deletar pokemon por ID:
 
 ![09](https://user-images.githubusercontent.com/62452619/115165176-00d43800-a083-11eb-8842-a48650fada20.png)
 
-### :computer: Technologies
+### :computer: Tecnologias
 
 - [Java](https://www.java.com/pt-BR/)
 - [PostgreSQL](https://www.postgresql.org)
@@ -87,36 +87,36 @@ Delete by ID popup
 - [x] Edit/Update/Delete Screen
 - [ ] Create team Screen
 
-## :bricks: Installation
+## :bricks: Instalação
 
-### :construction: Prerequisites
+### :construction: Pré-requisitos
 
-Clone this project repository:
+Clone o repositório deste projeto:
 
 ```bash
 
 $ git clone git@github.com:3salles/pokemon-team.git
 
-#Enter in `Pokemon Team Manager` folder:
+# Entre na pasta `Pokemon Team Manager` :
 
 $ cd pokemon-team
 ```
 
-🚨 If you don't have git in your machine, you can install it [here](https://git-scm.com/downloads).
+🚨 Se você não possui git em sua máquina, você pode instalar [aqui](https://git-scm.com/downloads).
 
 ## :lipstick: Front-end
 
-Open `gui` folder and run:
+Abara a pasta `gui` e rode os comandos:
 ```shell
 javac Home.java
 java Home
 
 ```
 
-And enjoy the app!! :laughing:
+E divirta-se com o app!! :laughing:
 ## :file_cabinet: Back-end
 
-In `db/JdbcConnection.java` archive, change the following lines to its own user and password database:
+No arquivo `db/JdbcConnection.java`, mude as seguintes linhas com o seu usuário e senha do banco de dados:
 
 ```java
 
@@ -127,7 +127,7 @@ In `db/JdbcConnection.java` archive, change the following lines to its own user 
 
 ```
 
-Run `db/JdbcConnection.java` archive to connect to PostgreSQL database.
+Rode o arquivo `db/JdbcConnection.java` para conectar-se ao banco de dados do PostgreSQL.
 
 ```java
 
@@ -135,7 +135,7 @@ javac JdbcConnection.java
 java JdbcConnection
 ```
 
-To create Pokemon table, run `db/CreateTable.java` archive:
+Para criar a tabela de Pokemons, rode o arquivo `db/CreateTable.java`:
 
 ```shell
 
@@ -144,7 +144,7 @@ java CreateTable
 
 ```
 
-🚨 OPTIONAL: To insert, list and delete pokemon, just remove comments in insert area and run the `view\Main.java`archive:
+🚨 OPCIONAL: Para inserir, listar e deletar pokemon, apenas remova os comentários  na area de inserir e rode o arquivo `view\Main.java`:
 
 ```shell
 
@@ -153,11 +153,11 @@ java Main
 
 ```
 
-## :page_facing_up: License
+## :page_facing_up: Licença
 
-This project uses [MIT](https://github.com/3salles/pokemon-team/blob/main/LICENSE) lincense.
+Este projeto usa a licença [MIT](https://github.com/3salles/pokemon-team/blob/main/LICENSE).
 
-## :woman_technologist: Author
+## :woman_technologist: Autora
 
 <p align="center">
   <a href="https://github.com/3salles"><img src="https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/3salles" alt="Github" /></a>
@@ -165,4 +165,4 @@ This project uses [MIT](https://github.com/3salles/pokemon-team/blob/main/LICENS
   <a href="mailto:beatrizsallesss@gmail.com"><img src="https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:beatrizsallesss@gmail.com" alt="Gmail" /></a>
 </p>
 
-<p align="center">Developed with 💜 by Beatriz Salles</p>
+<p align="center">Desenvolvido com 💜 por Beatriz Salles</p>
